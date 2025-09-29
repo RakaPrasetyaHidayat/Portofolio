@@ -1,0 +1,136 @@
+/* Custom overrides for sidebar background and name styling */
+
+/* Replace solid dark sidebar background with an image + dark overlay for readability */
+.header {
+  /* Overlay keeps text/icons readable over the photo */
+  background: linear-gradient(rgba(4, 11, 20, 0.85), rgba(4, 11, 20, 0.85)),
+              url('../img/sidebar-bg.jpg') center center / cover no-repeat;
+}
+
+/* Slightly softer border around profile image to sit better on photo bg */
+.header .profile-img img {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Tidy the name: consistent uppercase, tighter line height, mild letter spacing */
+.header .logo .sitename {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.15;
+  text-align: center;
+  display: block;
+  margin-top: 4px;
+}
+
+/* About section: set custom background image and ensure readability */
+#about {
+  /* Uses image in assets/img/background-about.png */
+  background-image: url('../img/background-about.png');
+  background-size: cover;         /* Fill the section */
+  background-position: center;    /* Center the image */
+  background-repeat: no-repeat;   /* No tiling */
+  position: relative;             /* For overlay */
+  color: #fff;                    /* Base text color */
+}
+
+/* Dark overlay to improve text contrast over busy background */
+#about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* Adjust 0.35–0.60 as needed */
+  z-index: 0;
+}
+
+/* Lift regular content above overlay */
+#about > .container, #about .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Force text elements inside About to white */
+#about h1, #about h2, #about h3, #about h4, #about h5, #about h6,
+#about p, #about li, #about span, #about .fst-italic { color: #fff; }
+
+/* Links and icons inside About */
+#about a { color: #fff; text-decoration-color: rgba(255,255,255,0.5); }
+#about a:hover { color: #e6e6e6; }
+#about i, #about .bi { color: #fff; }
+
+/* Hide Stats (counters) section */
+#stats { display: none !important; }
+
+/* ------------------------------------------------------------
+   About photo tidy: spacing, rounded corners, and soft shadow
+   ------------------------------------------------------------ */
+/* Increase horizontal gutter between image and text only in About */
+#about .row { --bs-gutter-x: 2rem; }
+
+/* Make the profile image look neat and not "menabrak" the text */
+#about .col-lg-4 img {
+  display: block;                 /* Remove inline-gap */
+  width: 100%;                    /* Respect container */
+  height: auto;
+  border-radius: 12px;            /* Rounded corners */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); /* Soft depth */
+}
+
+/* Extra breathing room on large screens */
+@media (min-width: 992px) {
+  #about .col-lg-4 { padding-right: 12px; }
+  #about .content { padding-left: 12px; }
+}
+
+/* ==============================
+   Skills section (cards layout)
+   ============================== */
+#skills.section.dark-background {
+  /* ensure enough padding and consistent dark tone */
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+#skills .section-title h2 {
+  /* mimic monospace #skills title from screenshot */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+#skills .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+#skills .skill-card {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  padding: 14px 16px;
+}
+
+#skills .skill-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  display: inline-block;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+}
+
+#skills .skill-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#skills .skill-card li {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.6;
+}
