@@ -18,6 +18,10 @@
     document.querySelector('#header').classList.toggle('header-show');
     headerToggleBtn.classList.toggle('bi-list');
     headerToggleBtn.classList.toggle('bi-x');
+
+    // Update ARIA attributes for accessibility
+    const isExpanded = document.querySelector('#header').classList.contains('header-show');
+    headerToggleBtn.setAttribute('aria-expanded', isExpanded);
   }
   headerToggleBtn.addEventListener('click', headerToggle);
 
